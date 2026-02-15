@@ -100,7 +100,7 @@ export function Editor({ listingName, approved, onApprovalChange }: EditorProps)
           value={price}
           onChange={e => handlePriceChange(e.target.value)}
           placeholder="$0"
-          rows={4}
+          rows={10}
         />
       </div>
 
@@ -110,7 +110,7 @@ export function Editor({ listingName, approved, onApprovalChange }: EditorProps)
           value={description}
           onChange={e => handleDescriptionChange(e.target.value)}
           placeholder="Listing description..."
-          rows={12}
+          rows={10}
         />
       </div>
 
