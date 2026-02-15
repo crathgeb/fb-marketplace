@@ -95,21 +95,21 @@ export function Editor({ listingName, approved, onApprovalChange }: EditorProps)
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium">Price</label>
-        <Textarea
-          value={price}
-          onChange={e => handlePriceChange(e.target.value)}
-          placeholder="$0"
-          rows={10}
-        />
-      </div>
-
-      <div className="space-y-2">
         <label className="text-sm font-medium">Description</label>
         <Textarea
           value={description}
           onChange={e => handleDescriptionChange(e.target.value)}
           placeholder="Listing description..."
+          rows={10}
+        />
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-sm font-medium">Price</label>
+        <Textarea
+          value={price}
+          onChange={e => handlePriceChange(e.target.value)}
+          placeholder="$0"
           rows={10}
         />
       </div>
