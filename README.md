@@ -78,60 +78,69 @@ listings/
 
 The `approved.md` file acts as a flag. Its presence marks the listing as approved; the actual content is ignored. The app creates/deletes this file when you toggle approval.
 
-## Workflow
+## The Flow
 
-### 1. Add Product Images
+| Step | Action | Type |
+|------|--------|------|
+| 1 | Drop images into `./inbox/` | Manual |
+| 2 | `./scripts/process-inbox.sh` | Script |
+| 3 | Verify listings look right | Manual |
+| 4 | `./scripts/generate-all-listings.sh` | Script |
+| 5 | Edit descriptions and prices in web app | Manual |
+| 6 | Approve listings | Manual |
+| 7 | `./scripts/export-template.sh` | Script |
 
-Drop product photos into a folder under `listings/`:
+### 1. Drop Images
 
+Add product photos to the `inbox/` folder.
+
+### 2. Process Inbox
+
+```bash
+./scripts/process-inbox.sh
 ```
-listings/
-  My Product/
-    IMG_001.jpeg
-    IMG_002.jpeg
-```
 
-### 2. Generate Listing Content
+Organizes images into listing folders under `listings/`.
 
-Use Claude to analyze images and generate listing files:
+### 3. Verify Listings
+
+Check that the listing folders were created correctly and images are in the right places.
+
+### 4. Generate Listings
 
 ```bash
 ./scripts/generate-all-listings.sh
 ```
 
-Or generate a single listing:
+Analyzes images, researches products, and generates title.md, description.md, and price.md files.
 
-```bash
-claude "/generate-listing @listings/My Product"
-```
-
-### 3. Edit in Web App
-
-Start the app and refine titles, descriptions, and prices:
+### 5. Edit in Web App
 
 ```bash
 cd app && npm run dev
 ```
 
-### 4. Approve Listings
+Refine titles, descriptions, and prices using the three-panel interface.
+
+### 6. Approve Listings
 
 Click "Approve" in the editor for listings ready to publish.
 
-### 5. Export to Facebook
-
-Export approved listings to bulk upload format:
+### 7. Export Template
 
 ```bash
 ./scripts/export-template.sh
 ```
 
+Exports approved listings to Facebook Marketplace bulk upload format.
+
 ## Scripts
 
 | Script | Purpose |
 |--------|---------|
-| `generate-all-listings.sh` | Generate listings for all folders missing description.md |
-| `export-template.sh` | Export approved listings to FB bulk upload template |
 | `process-inbox.sh` | Organize inbox images into listing folders |
+| `generate-all-listings.sh` | Research products and generate listing content |
+| `export-template.sh` | Export approved listings to FB bulk upload template |
 
 ## Tech Stack
 
