@@ -5,19 +5,15 @@ description: Use when creating FB Marketplace listing files from a folder of pro
 
 # Generate FB Marketplace Listing Summary
 
-## Overview
+Every listing we create follows this exact workflow. We never skip steps or guess at product details.
 
-Analyze product images in a listings folder, identify brand/model information, research the product online, and generate listing files for FB Marketplace.
+## Requirements
 
-## When to Use
+Before proceeding, you MUST:
 
-- When you have a folder in `/listings/` with product images
-- When you need to create title, description, and price files for a listing
-- When you want to automate FB Marketplace listing creation
-
-## Required Input
-
-- **Folder path**: A folder in the `listings/` directory containing product images (JPEG, PNG, etc.)
+1. Have a folder path in the `listings/` directory containing product images
+2. Commit to analyzing ALL images - not just the first one
+3. Invoke `fb-marketplace:research-item` whenever brand/model is identified - no exceptions
 
 ## Workflow
 
@@ -54,13 +50,15 @@ digraph generate_summary {
 
 ### 1. Find All Images
 
-Scan the provided folder for image files:
+IMMEDIATELY scan the provided folder for image files. Never assume what's there.
+
+Supported formats - check for all of these:
 
 - `.jpeg`, `.jpg`, `.png`, `.heic`, `.webp`
 
 ### 2. Analyze Images
 
-Use the Read tool to view each image. For each image, identify:
+Use the Read tool to view EVERY image. For each image, you MUST identify:
 
 - **What is the product?** (category, type)
 - **Condition**: New, like new, good, fair
@@ -69,16 +67,18 @@ Use the Read tool to view each image. For each image, identify:
 - **Model numbers, serial numbers, or product codes**
 - **Size indicators** (if visible)
 
+Never stop at the first image - critical information appears on backs, bottoms, and tags.
+
 ### 3. Extract Brand/Model Information
 
-Look for:
+You MUST look for:
 
 - Brand name on product or packaging
 - Model number (often on stickers, tags, or embossed)
 - UPC/barcode numbers
 - Any text that identifies the specific product
 
-**Common locations:**
+**Always check these locations:**
 
 - Front label/logo
 - Bottom or back of product
@@ -88,14 +88,16 @@ Look for:
 
 ### 4. Research Product
 
-If brand/model is identified:
+**If brand/model is identified - this is mandatory:**
 
 ```
 Invoke skill: fb-marketplace:research-item
 Input: Brand name, model number, product category
 ```
 
-If no brand/model found:
+Never skip research when we have a brand. Research transforms guesses into accurate listings.
+
+**If no brand/model found:**
 
 - Use generic product description from image analysis
 - Estimate pricing based on similar items
@@ -103,14 +105,16 @@ If no brand/model found:
 
 ### 5. Check Existing listing.md
 
-If a `listing.md` file exists in the folder:
+IMMEDIATELY check if a `listing.md` file exists in the folder:
 
 - Read it for additional context (sizes, quantities, notes)
-- Incorporate this information into the output
+- Incorporate this information into our output
+
+Never ignore seller notes - they contain information invisible in photos.
 
 ### 6. Generate Output Files
 
-Create three files in the listing folder:
+Create three files in the listing folder. Every file MUST follow these exact formats:
 
 #### title.md
 
@@ -119,7 +123,7 @@ Create three files in the listing folder:
 [Brand] [Product Type] [Key Feature/Size] - [Condition]
 ```
 
-**Title formula:**
+**Our title formula - follow exactly:**
 
 - Lead with brand (if known)
 - Include product type
@@ -159,10 +163,10 @@ Create three files in the listing folder:
 Local pickup only in Chapel Hill off of Larkin Lane.
 ```
 
-**Description guidelines:**
+**Our description requirements:**
 
 - Start with a hook (what it is, why it's great)
-- Include specifications from research
+- Include specifications from research - never omit these
 - Describe actual condition honestly
 - List what's included
 - Keep paragraphs short for mobile reading
@@ -182,7 +186,7 @@ Local pickup only in Chapel Hill off of Larkin Lane.
 
 ## Output File Locations
 
-All files are created in the same folder as the images:
+All files MUST be created in the same folder as the images:
 
 ```
 listings/
@@ -210,10 +214,12 @@ For folder `listings/Galanz ExpressWAve Microwave/`:
 
 ## Common Mistakes
 
-| Mistake                  | Fix                                              |
-| ------------------------ | ------------------------------------------------ |
-| Missing brand in images  | Look at all angles, check bottom/back of product |
-| Overly long titles       | Keep under 100 chars, focus on searchable terms  |
-| Generic descriptions     | Use research to add specific features and specs  |
-| Pricing without research | Always invoke research-item for accurate pricing |
-| Ignoring listing.md      | Check for existing notes that add context        |
+| Mistake | Result | Fix |
+| ------- | ------ | --- |
+| Analyzing only the first image | Missing brand info on back/bottom, incorrect identification | Always analyze ALL images in the folder |
+| Skipping brand in images | Generic listing that undersells the product | Always check all angles, bottom, back, tags |
+| Overly long titles | Gets truncated, looks unprofessional | Always keep under 100 chars, focus on searchable terms |
+| Generic descriptions | Listing looks lazy, fewer buyers | Always invoke research-item and use specific features |
+| Pricing without research | Items either never sell or leave money on the table | Always invoke research-item for accurate pricing |
+| Ignoring listing.md | Missing seller context like sizes, quantities, defects | Always check for existing notes before generating |
+| Skipping specifications | Buyers flood comments with questions | Always include dimensions and key specs from research |

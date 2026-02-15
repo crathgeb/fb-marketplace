@@ -5,23 +5,15 @@ description: Use when you need to research a product online to find its retail p
 
 # Research Item for FB Marketplace
 
-## Overview
+Every accurate FB Marketplace listing in our workflow starts here. We never guess prices or descriptions - we research them.
 
-Research a product online to gather pricing, descriptions, and specifications for creating accurate FB Marketplace listings.
+## Requirements
 
-## When to Use
+Before proceeding, you MUST:
 
-- After identifying a brand name or model number from product images
-- When you need to find the retail/used price of an item
-- When you need official product descriptions or specifications
-- When measurements or dimensions are needed for a listing
-
-## Required Input
-
-You must be provided with:
-
-- **Product identifier**: Brand name, model number, or detailed product description
-- **Product category**: (e.g., electronics, clothing, tools, furniture)
+1. Have a product identifier (brand name, model number, or detailed description)
+2. Know the product category (electronics, clothing, tools, furniture, etc.)
+3. Commit to checking multiple sources - single-source pricing always fails
 
 ## Research Workflow
 
@@ -53,34 +45,36 @@ digraph research_flow {
 
 ### 1. Search for Exact Product
 
-Use WebSearch to find the product:
+IMMEDIATELY use WebSearch to find the product. Never skip straight to pricing.
 
-- Search: `"[Brand] [Model]"` (exact match first)
+Execute these searches in order:
+
+- Search: `"[Brand] [Model]"` (exact match first - always start here)
 - Search: `[Brand] [Model] specifications`
 - Search: `[Brand] [Model] review`
 
 ### 2. Find Retail Price
 
-Look for current retail pricing:
+You MUST locate current retail pricing before estimating used value. Check:
 
 - Amazon product pages
 - Manufacturer website
 - Major retailers (Home Depot, Walmart, Target, etc.)
 
-Record:
+Record BOTH of these - no exceptions:
 
 - Current retail price (or last known if discontinued)
 - MSRP if different from current price
 
 ### 3. Find Used Market Value
 
-Search for sold/completed listings:
+IMMEDIATELY after finding retail, search for sold/completed listings:
 
 - `[Brand] [Model] site:ebay.com sold`
 - `[Brand] [Model] used price`
 - Check FB Marketplace (if accessible) for similar items
 
-Record:
+Record ALL of these:
 
 - Price range of recently sold items
 - Average selling price
@@ -88,16 +82,18 @@ Record:
 
 ### 4. Extract Product Description
 
-From official sources, extract:
+From official sources, you MUST extract:
 
 - Official product name/title
 - Key features (bullet points)
 - Product category
 - Target use case
 
+Never write our own marketing copy when official descriptions exist.
+
 ### 5. Extract Specifications
 
-Look for:
+Always look for these - missing specs make listings fail:
 
 - **Dimensions**: Height, width, depth, weight
 - **Capacity**: Volume, wattage, size ratings
@@ -107,6 +103,8 @@ Look for:
 
 ### 6. Calculate Price Recommendation
 
+We always use this pricing table - no exceptions:
+
 | Condition               | Suggested Price  |
 | ----------------------- | ---------------- |
 | Like New / Sealed       | 60-75% of retail |
@@ -114,7 +112,7 @@ Look for:
 | Good (normal wear)      | 40-50% of retail |
 | Fair (visible wear)     | 25-40% of retail |
 
-Adjust based on:
+You MUST adjust based on:
 
 - Local market demand
 - Seasonality
@@ -123,7 +121,7 @@ Adjust based on:
 
 ## Output Format
 
-Return a structured summary:
+Every research summary MUST follow this exact format:
 
 ```markdown
 ## Research Summary: [Product Name]
@@ -164,9 +162,11 @@ Return a structured summary:
 
 ## Common Mistakes
 
-| Mistake                             | Fix                                         |
-| ----------------------------------- | ------------------------------------------- |
-| Using retail price as listing price | Always discount 40-75% for used items       |
-| Missing model number in search      | Include exact model for accurate results    |
-| Ignoring condition in pricing       | Adjust price based on actual item condition |
-| Single source for pricing           | Check multiple sources for accurate range   |
+| Mistake | Result | Fix |
+| ------- | ------ | --- |
+| Using retail price as listing price | Item never sells, wastes seller's time | Always discount 40-75% for used items |
+| Missing model number in search | Wrong product, wrong price, angry buyer | Always include exact model for accurate results |
+| Ignoring condition in pricing | Overpriced items sit unsold for weeks | Always adjust price based on actual item condition |
+| Single source for pricing | Wildly inaccurate estimates | Always check multiple sources - minimum of 3 |
+| Skipping specifications | Buyers ask questions, listing looks amateur | Always extract dimensions and key specs |
+| Writing custom descriptions | Inconsistent quality, missing features | Always use official descriptions when available |
