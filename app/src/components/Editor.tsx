@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { getFileContent, saveFileContent, approveListing, unapproveListing } from '@/lib/api';
@@ -87,19 +86,21 @@ export function Editor({ listingName, approved, onApprovalChange }: EditorProps)
     <div className="space-y-4">
       <div className="space-y-2">
         <label className="text-sm font-medium">Title</label>
-        <Input
+        <Textarea
           value={title}
           onChange={e => handleTitleChange(e.target.value)}
           placeholder="Listing title..."
+          rows={2}
         />
       </div>
 
       <div className="space-y-2">
         <label className="text-sm font-medium">Price</label>
-        <Input
+        <Textarea
           value={price}
           onChange={e => handlePriceChange(e.target.value)}
           placeholder="$0"
+          rows={4}
         />
       </div>
 

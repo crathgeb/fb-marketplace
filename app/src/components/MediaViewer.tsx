@@ -28,9 +28,9 @@ export function MediaViewer({ listingName, images, videos }: MediaViewerProps) {
   const mediaUrl = getMediaUrl(listingName, selectedFile);
 
   return (
-    <div className="space-y-3">
+    <div className="flex flex-col h-full gap-3">
       {/* Large preview */}
-      <div className="bg-muted rounded-lg overflow-hidden flex items-center justify-center" style={{ height: '400px' }}>
+      <div className="bg-muted rounded-lg overflow-hidden flex items-center justify-center flex-1 min-h-0">
         {isVideo ? (
           <video
             key={mediaUrl}
@@ -50,7 +50,7 @@ export function MediaViewer({ listingName, images, videos }: MediaViewerProps) {
 
       {/* Thumbnails */}
       {allMedia.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto pb-2">
+        <div className="flex gap-2 overflow-x-auto pb-2 flex-shrink-0">
           {allMedia.map((file, index) => {
             const isVid = videos.includes(file);
             const thumbUrl = getMediaUrl(listingName, file);

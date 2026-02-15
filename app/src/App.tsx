@@ -53,8 +53,8 @@ function App() {
         />
         <main className="flex-1 overflow-auto p-6">
           {selectedListing ? (
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="flex items-center justify-between gap-4">
+            <div className="h-full flex flex-col">
+              <div className="flex items-center justify-between gap-4 mb-4">
                 <Button
                   variant="outline"
                   size="sm"
@@ -75,16 +75,22 @@ function App() {
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
-              <MediaViewer
-                listingName={selectedListing.name}
-                images={selectedListing.images}
-                videos={selectedListing.videos}
-              />
-              <Editor
-                listingName={selectedListing.name}
-                approved={selectedListing.approved}
-                onApprovalChange={handleApprovalChange}
-              />
+              <div className="flex-1 flex gap-6 min-h-0">
+                <div className="flex-1 min-w-0">
+                  <MediaViewer
+                    listingName={selectedListing.name}
+                    images={selectedListing.images}
+                    videos={selectedListing.videos}
+                  />
+                </div>
+                <div className="flex-1 min-w-0 overflow-auto">
+                  <Editor
+                    listingName={selectedListing.name}
+                    approved={selectedListing.approved}
+                    onApprovalChange={handleApprovalChange}
+                  />
+                </div>
+              </div>
             </div>
           ) : (
             <div className="h-full flex items-center justify-center text-muted-foreground">
