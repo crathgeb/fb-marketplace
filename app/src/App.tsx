@@ -3,6 +3,8 @@ import { Sidebar } from '@/components/Sidebar';
 import { MediaViewer } from '@/components/MediaViewer';
 import { Editor } from '@/components/Editor';
 import { getListings } from '@/lib/api';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Listing } from '@/types';
 import './index.css';
 
@@ -19,10 +21,23 @@ function App() {
     loadListings();
   }, [loadListings]);
 
-  const selectedListing = listings.find(l => l.name === selectedName);
+  const selectedIndex = listings.findIndex(l => l.name === selectedName);
+  const selectedListing = selectedIndex >= 0 ? listings[selectedIndex] : null;
 
   const handleApprovalChange = () => {
     loadListings();
+  };
+
+  const goToPrevious = () => {
+    if (selectedIndex > 0) {
+      setSelectedName(listings[selectedIndex - 1].name);
+    }
+  };
+
+  const goToNext = () => {
+    if (selectedIndex < listings.length - 1) {
+      setSelectedName(listings[selectedIndex + 1].name);
+    }
   };
 
   return (
@@ -39,7 +54,27 @@ function App() {
         <main className="flex-1 overflow-auto p-6">
           {selectedListing ? (
             <div className="max-w-3xl mx-auto space-y-6">
-              <h2 className="text-xl font-semibold">{selectedListing.name}</h2>
+              <div className="flex items-center justify-between gap-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={goToPrevious}
+                  disabled={selectedIndex <= 0}
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" />
+                  Previous
+                </Button>
+                <h2 className="text-xl font-semibold text-center flex-1 truncate">{selectedListing.name}</h2>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={goToNext}
+                  disabled={selectedIndex >= listings.length - 1}
+                >
+                  Next
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
               <MediaViewer
                 listingName={selectedListing.name}
                 images={selectedListing.images}

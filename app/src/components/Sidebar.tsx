@@ -10,7 +10,7 @@ interface SidebarProps {
 
 export function Sidebar({ listings, selectedName, onSelect }: SidebarProps) {
   return (
-    <div className="w-64 border-r bg-muted/30 flex flex-col h-full">
+    <div className="w-80 border-r bg-muted/30 flex flex-col h-full">
       <div className="p-4 border-b font-semibold">
         Listings ({listings.length})
       </div>
