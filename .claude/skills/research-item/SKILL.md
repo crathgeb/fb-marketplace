@@ -41,48 +41,42 @@ digraph research_flow {
 }
 ```
 
+## Tool Strategy
+
+**Prefer WebSearch over WebFetch.** WebSearch returns rich summaries directly and is fast/reliable. WebFetch often hangs or fails on retailer sites (Costco, Amazon, etc.).
+
+- **Use WebSearch**: For all pricing, specifications, and product info
+- **Use WebFetch**: Only for manufacturer spec sheets or PDFs that WebSearch can't summarize
+- **If WebFetch fails or hangs**: Move on immediately - use WebSearch results instead
+
+**Run searches in parallel** when they don't depend on each other.
+
 ## Research Steps
 
-### 1. Search for Exact Product
+### 1. Search for Product Info (Run in Parallel)
 
-IMMEDIATELY use WebSearch to find the product. Never skip straight to pricing.
+IMMEDIATELY run these WebSearch queries in parallel:
 
-Execute these searches in order:
+- `"[Brand] [Model]" specifications price` (primary search)
+- `[Brand] [Model] site:ebay.com sold` (used market pricing)
+- `[Brand] [Model] review` (features and real-world info)
 
-- Search: `"[Brand] [Model]"` (exact match first - always start here)
-- Search: `[Brand] [Model] specifications`
-- Search: `[Brand] [Model] review`
+### 2. Extract Pricing from Search Results
 
-### 2. Find Retail Price
+WebSearch results typically include prices directly. Look for:
 
-You MUST locate current retail pricing before estimating used value. Check:
+- Retail prices from Amazon, Home Depot, Walmart, Costco in search snippets
+- eBay sold prices in search results
+- Do NOT use WebFetch on retailer sites - they block or hang
 
-- Amazon product pages
-- Manufacturer website
-- Major retailers (Home Depot, Walmart, Target, etc.)
-
-Record BOTH of these - no exceptions:
+Record:
 
 - Current retail price (or last known if discontinued)
-- MSRP if different from current price
+- Used/sold price range from eBay results
 
-### 3. Find Used Market Value
+### 3. Extract Product Description
 
-IMMEDIATELY after finding retail, search for sold/completed listings:
-
-- `[Brand] [Model] site:ebay.com sold`
-- `[Brand] [Model] used price`
-- Check FB Marketplace (if accessible) for similar items
-
-Record ALL of these:
-
-- Price range of recently sold items
-- Average selling price
-- Condition notes that affect price
-
-### 4. Extract Product Description
-
-From official sources, you MUST extract:
+From WebSearch results, extract:
 
 - Official product name/title
 - Key features (bullet points)
@@ -91,7 +85,7 @@ From official sources, you MUST extract:
 
 Never write our own marketing copy when official descriptions exist.
 
-### 5. Extract Specifications
+### 4. Extract Specifications
 
 Always look for these - missing specs make listings fail:
 
@@ -101,7 +95,7 @@ Always look for these - missing specs make listings fail:
 - **Model variants**: Color options, size options
 - **Included accessories**: What comes in the box
 
-### 6. Calculate Price Recommendation
+### 5. Calculate Price Recommendation
 
 We always use this pricing table - no exceptions:
 
@@ -164,9 +158,11 @@ Every research summary MUST follow this exact format:
 
 | Mistake                             | Result                                      | Fix                                                |
 | ----------------------------------- | ------------------------------------------- | -------------------------------------------------- |
+| Using WebFetch on retailer sites    | Hangs or fails, wastes time                 | Use WebSearch - it returns prices in snippets      |
 | Using retail price as listing price | Item never sells, wastes seller's time      | Always discount 25%-30% for used items             |
 | Missing model number in search      | Wrong product, wrong price, angry buyer     | Always include exact model for accurate results    |
 | Ignoring condition in pricing       | Overpriced items sit unsold for weeks       | Always adjust price based on actual item condition |
 | Single source for pricing           | Wildly inaccurate estimates                 | Always check multiple sources - minimum of 3       |
 | Skipping specifications             | Buyers ask questions, listing looks amateur | Always extract dimensions and key specs            |
 | Writing custom descriptions         | Inconsistent quality, missing features      | Always use official descriptions when available    |
+| Running searches sequentially       | Slow research, user waiting                 | Run independent WebSearch queries in parallel      |
