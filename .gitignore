@@ -1,0 +1,6 @@
+# Listing content (images and generated files)
+listings/
+inbox/
+
+# OS files
+.DS_Store
