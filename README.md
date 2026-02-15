@@ -2,6 +2,8 @@
 
 A web application for managing Facebook Marketplace listings at scale. Edit product details, preview media, approve listings, and export to Facebook's bulk upload format.
 
+![Screenshot](docs/images/screenshot.png)
+
 ## Features
 
 - **Three-panel interface**: Browse listings in sidebar, preview images/videos, edit details
