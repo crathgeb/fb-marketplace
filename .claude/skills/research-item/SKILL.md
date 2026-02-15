@@ -162,11 +162,11 @@ Every research summary MUST follow this exact format:
 
 ## Common Mistakes
 
-| Mistake | Result | Fix |
-| ------- | ------ | --- |
-| Using retail price as listing price | Item never sells, wastes seller's time | Always discount 40-75% for used items |
-| Missing model number in search | Wrong product, wrong price, angry buyer | Always include exact model for accurate results |
-| Ignoring condition in pricing | Overpriced items sit unsold for weeks | Always adjust price based on actual item condition |
-| Single source for pricing | Wildly inaccurate estimates | Always check multiple sources - minimum of 3 |
-| Skipping specifications | Buyers ask questions, listing looks amateur | Always extract dimensions and key specs |
-| Writing custom descriptions | Inconsistent quality, missing features | Always use official descriptions when available |
+| Mistake                             | Result                                      | Fix                                                |
+| ----------------------------------- | ------------------------------------------- | -------------------------------------------------- |
+| Using retail price as listing price | Item never sells, wastes seller's time      | Always discount 25%-30% for used items             |
+| Missing model number in search      | Wrong product, wrong price, angry buyer     | Always include exact model for accurate results    |
+| Ignoring condition in pricing       | Overpriced items sit unsold for weeks       | Always adjust price based on actual item condition |
+| Single source for pricing           | Wildly inaccurate estimates                 | Always check multiple sources - minimum of 3       |
+| Skipping specifications             | Buyers ask questions, listing looks amateur | Always extract dimensions and key specs            |
+| Writing custom descriptions         | Inconsistent quality, missing features      | Always use official descriptions when available    |

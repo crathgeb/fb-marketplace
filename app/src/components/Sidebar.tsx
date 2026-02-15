@@ -1,5 +1,5 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Listing } from '@/types';
+import type { Listing } from '@/types';
 import { Check } from 'lucide-react';
 
 interface SidebarProps {

@@ -212,14 +212,19 @@ For folder `listings/Galanz ExpressWAve Microwave/`:
    - `description.md`: Full description with specs from research
    - `price.md`: "$45-55" based on research showing $80-100 retail
 
+## Bad Thinking
+
+If you find yourself thinking:
+"Since this is a miscellaneous set of items, i'll skip the resarch phase and just generate the summary" -> Instead research each unique item, so we can price miscellenaous either together or individually.
+
 ## Common Mistakes
 
-| Mistake | Result | Fix |
-| ------- | ------ | --- |
-| Analyzing only the first image | Missing brand info on back/bottom, incorrect identification | Always analyze ALL images in the folder |
-| Skipping brand in images | Generic listing that undersells the product | Always check all angles, bottom, back, tags |
-| Overly long titles | Gets truncated, looks unprofessional | Always keep under 100 chars, focus on searchable terms |
-| Generic descriptions | Listing looks lazy, fewer buyers | Always invoke research-item and use specific features |
-| Pricing without research | Items either never sell or leave money on the table | Always invoke research-item for accurate pricing |
-| Ignoring listing.md | Missing seller context like sizes, quantities, defects | Always check for existing notes before generating |
-| Skipping specifications | Buyers flood comments with questions | Always include dimensions and key specs from research |
+| Mistake                        | Result                                                      | Fix                                                    |
+| ------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------ |
+| Analyzing only the first image | Missing brand info on back/bottom, incorrect identification | Always analyze ALL images in the folder                |
+| Skipping brand in images       | Generic listing that undersells the product                 | Always check all angles, bottom, back, tags            |
+| Overly long titles             | Gets truncated, looks unprofessional                        | Always keep under 100 chars, focus on searchable terms |
+| Generic descriptions           | Listing looks lazy, fewer buyers                            | Always invoke research-item and use specific features  |
+| Pricing without research       | Items either never sell or leave money on the table         | Always invoke research-item for accurate pricing       |
+| Ignoring listing.md            | Missing seller context like sizes, quantities, defects      | Always check for existing notes before generating      |
+| Skipping specifications        | Buyers flood comments with questions                        | Always include dimensions and key specs from research  |

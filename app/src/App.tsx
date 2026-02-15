@@ -3,7 +3,7 @@ import { Sidebar } from '@/components/Sidebar';
 import { MediaViewer } from '@/components/MediaViewer';
 import { Editor } from '@/components/Editor';
 import { getListings } from '@/lib/api';
-import { Listing } from '@/types';
+import type { Listing } from '@/types';
 import './index.css';
 
 function App() {
